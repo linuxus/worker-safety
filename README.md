@@ -6,6 +6,12 @@ In this lab your will the following:
 - Modify the DeepLens object detection inference lambda function to detect persons and upload frame to S3.
 - Create lambda function to identify persons who are not wearing safety hats.
 - Analyze results using IoT and CloudWatch and Web Dashboard.
+## Table of Contents
+1. [Architecture](#Architecture)
+2. [Modules](#Modules)
+3. [Register your DeepLens Device](#registerdl)
+4. [Create the *object-detection* model](#createmodel)
+
 
 ## Architecture
 
@@ -13,7 +19,7 @@ In this lab your will the following:
 
 ## Modules
 
-### Register your DeepLens Device
+### Register your DeepLens Device <a id="registerdl"></a>
 If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
 
 To configure your AWS account for AWS DeepLens
@@ -40,7 +46,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 11. Open the network management tool on your computer. Choose your device's SSID from the list of available Wi-Fi networks and type the password for the device's network. The SSID and password are printed on the bottom of your device. The device's Wi-Fi network's SSID has the AMDC-NNNN format
 12. After successfully connecting your computer to the device's Wi-Fi network, you're now ready to launch the device setup application to configure your device. 
 
-### Create the *object-detection* model
+### Create the *object-detection* model <a id="createmodel"></a>
 1. Using your browser, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
 3. On the Choose project type screen
