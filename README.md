@@ -71,6 +71,10 @@ Certificates aren't reusable. You must generate a new certificate every time you
 
 **Important**: It's highly critical for the lab rest of the lab until this model is created.
 
+6. Once you've confirmed that the object-detection model has been created delete the recently created project.
+    - Click on *Projects* on the left navigation and select the project name (example: lab1-object-detection)
+    - Click on the Delete button on the top right hand side
+
 ### Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
 
 1. Go to IAM in AWS Console at https://console.aws.amazon.com/iam
@@ -217,7 +221,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 3. Click on Create New Identity Pool
 4. Enter “awsworkersafety” for Identity pool name
 5. Select Enable access to unauthenticated identities
-6. We are using using Unauthenticated identity option to keep things simple in the demo. For real world application where you only want authorized users to access the app you should configure Authentication providers.
+- We are using using Unauthenticated identity option to keep things simple in the demo. For real world application where you only want authorized users to access the app you should configure Authentication providers.
 7. Click Create Pool
 8. Expand View Details
 9. Under: Your unauthenticated identities would like access to Cognito, expand View Policy Document and click Edit.
