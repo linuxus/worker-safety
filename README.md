@@ -1,7 +1,7 @@
 # Worker Safety with AWS DeepLens and Amazon Rekognition
 
 ## Learning Objectives of This lab
-In this lab your will the following:
+In this lab you will be achieving the following:
 - Create and deploy object detection project to DeepLens.
 - Modify the DeepLens object detection inference lambda function to detect persons and upload frame to S3.
 - Create lambda function to identify persons who are not wearing safety hats.
