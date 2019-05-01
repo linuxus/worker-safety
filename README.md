@@ -11,7 +11,17 @@ In this lab your will the following:
 2. [Modules](#Modules)
 3. [Register your DeepLens Device](#registerdl)
 4. [Create the *object-detection* model](#createmodel)
-
+5. [Setup IAM Role for Cloud Lambda](#cloudiamrole)
+6. [Setup IAM Role for DeepLens Lambda](#dliamrole)
+7. [Create S3 bucket](#s3create)
+8. [Create Cloud Lambda](#cloudlambda)
+9. [Create DeepLens Inference Lambda Function](#inferencelambda)
+10. [Create DeepLens Project](#createdlproject)
+11. [Deploy DeepLens Project](#deploydlproject)
+12. [View Output in IoT](#iotoutput)
+13. [View Output in CloudWatch](#cloudwatchoutput)
+14. [View Output in Web Dashboard](#dashboardoutput)
+15. [Clean Up](#cleanup)
 
 ## Architecture
 
@@ -61,7 +71,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 
 **Important**: It's highly critical for the lab rest of the lab until this model is created.
 
-### Setup IAM Role for Cloud Lambda
+### Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
 
 1. Go to IAM in AWS Console at https://console.aws.amazon.com/iam
 2. Click on Roles
@@ -78,7 +88,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 8. Click Create role
 
 
-### Setup IAM Role for DeepLens Lambda
+### Setup IAM Role for DeepLens Lambda <a id="dliamrole"></a>
 
 1. Click create role
 2. Under AWS service, select Lambda and click Next: Permissions
@@ -90,7 +100,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 6. Click Create role
 
 
-### Create S3 bucket
+### Create S3 bucket <a id="s3create"></a>
 
 1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
 2. Click on Create bucket.
@@ -104,7 +114,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 2.  Under Set permissions, uncheck all four checkboxes. NOTE: This step would allow us to make objects in your S3 bucket public. We are doing this to reduce few steps in the module, but you should not do that for production workloads. Instead it is recommended to use S3 Pre-Signed URLs to give time limited access to objects in S3.
 3. Click Next, and click Create bucket.
 
-### Create Cloud Lambda
+### Create Cloud Lambda <a id="cloudlambda"></a>
 
 1. Go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
 2. Click on Create function.
@@ -138,7 +148,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 * Click Add.
 * Click Save on the top right to save changed to Lambda function.
 
-### Create DeepLens Inference Lambda Function
+### Create DeepLens Inference Lambda Function <a id="inferencelambda"></a>
 
 1. Go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/.
 2. Click on Create function.
@@ -161,7 +171,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 10. Click on Actions, and then "Publish new version".
 11. For Version description enter: Detect person and push frame to S3 bucket. and click Publish.
 
-### Create DeepLens Project
+### Create DeepLens Project <a id="createdlproject"></a>
 
 1. Using your browser, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
@@ -178,7 +188,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
         * Click on Add function, click on radio button for your lambda function (example: kashif-worker-safety-deeplens) lambda function and click Add function.
 * Click Create. This returns you to the Projects screen.
 
-### Deploy DeepLens Project
+### Deploy DeepLens Project <a id="deploydlproject"></a>
 
 1. From DeepLens console, On the Projects screen, choose the radio button to the left of your project name, then choose Deploy to device.
 2. On the Target device screen, from the list of AWS DeepLens devices, choose the radio button to the left of the device where you want to deploy this project.
@@ -186,13 +196,13 @@ Certificates aren't reusable. You must generate a new certificate every time you
     If a project is already deployed to the device, you will see a warning message "There is an existing project on this device. Do you want to replace it? If you Deploy, AWS DeepLens will remove the current project before deploying the new project."
 4. On the Review and deploy screen, review your project and click Deploy to deploy the project. This will take you to to device screen, which shows the progress of your project deployment.
 
-### View Output in IoT
+### View Output in IoT <a id="iotoutput"></a>
 
 1. Go to IoT Console at https://console.aws.amazon.com/iot/home
 2. Under Subscription topic enter topic name you entered as environment variable for Lambda in earlier step (example: worker-safety-demo-cloud) and click Subscribe to topic.
 3. You should now see JSON message with a list of people detected and whether they are wearing safety hats or not.
 
-### View Output in CloudWatch
+### View Output in CloudWatch <a id="cloudwatchoutput"></a>
 
 1. Go to CloudWatch Console at https://console.aws.amazon.com/cloudwatch
 2. Create a dashboard called “worker-safety-dashboard-your-name”
@@ -200,7 +210,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 4. Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat.
 5. Next, set “Auto-refresh” to the smallest interval possible (1h), and change the “Period” to whatever works best for you (1 second or 5 seconds)
 
-### View Output in Web Dashboard
+### View Output in Web Dashboard <a id="dashboardoutput"></a>
 
 1. Go to AWS Cognito console at https://console.aws.amazon.com/cognito
 2. Click on Manage Identity Pools
@@ -231,5 +241,5 @@ Certificates aren't reusable. You must generate a new certificate every time you
 27. You should now see images coming from DeepLens with a green or red box around the person.
 
 
-## Clean Up
+## Clean Up <a id="cleanup"></a>
 Delete Lambda functions, S3 bucket and IAM roles.
