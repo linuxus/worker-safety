@@ -111,20 +111,20 @@ Certificates aren't reusable. You must generate a new certificate every time you
 * Existing role: RecognizeObjectLambdaRole
 * Click Create function
 
-1. Under Environment variables, add a variable:
+5. Under Environment variables, add a variable:
 
 * Key: iot_topic
 * Value: worker-safety-demo-cloud
 
-1. Download [lambda.zip](./code/lambda.zip).
-2. Under Function code:
+6. Download [lambda.zip](./code/lambda.zip).
+7. Under Function code:
 
 * Code entry type: Upload a zip file
 * Under Function package, click Upload and select the zip file you downloaded in earlier step.
 * Click Save.
 
-1. Under Add triggers, select S3.
-2. Under Configure triggers:
+8. Under Add triggers, select S3.
+9. Under Configure triggers:
 
 * Bucket: Select the S3 bucket you just created in earlier step.
 * Event type: Leave default Object Created (All)
@@ -146,14 +146,14 @@ Certificates aren't reusable. You must generate a new certificate every time you
 * Existing role: DeepLensInferenceLambdaRole
 * Click Create function.
 
-1. Copy the code from [deeplens-lambda.py](./code/deeplens-lambda.py) and paste under Function code for the lambda function. You can find the python file in your resources section.
-2. Go to line 34 and modify line below with the name of your S3 bucket created in the earlier step.
+7. Copy the code from [deeplens-lambda.py](./code/deeplens-lambda.py) and paste under Function code for the lambda function. You can find the python file in your resources section.
+8. Go to line 34 and modify line below with the name of your S3 bucket created in the earlier step.
 
 * bucket_name = "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET"
 
-1. Click Save.
-2. Click on Actions, and then "Publish new version".
-3. For Version description enter: Detect person and push frame to S3 bucket. and click Publish.
+9. Click Save.
+10. Click on Actions, and then "Publish new version".
+11. For Version description enter: Detect person and push frame to S3 bucket. and click Publish.
 
 ### Create DeepLens Project
 
@@ -163,7 +163,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 
 * Choose Create a new blank project, and click Next.
 
-1. On the Specify project details screen
+4. On the Specify project details screen
 
     * Under Project information section:
         * Project name: your-user-name-worker-safety (example: kashif-worker-safety)
@@ -188,11 +188,11 @@ Certificates aren't reusable. You must generate a new certificate every time you
 
 ### View Output in CloudWatch
 
-* Go to CloudWatch Console at https://console.aws.amazon.com/cloudwatch
-* Create a dashboard called “worker-safety-dashboard-your-name”
-* Choose Line in the widget
-* Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat.
-* Next, set “Auto-refresh” to the smallest interval possible (1h), and change the “Period” to whatever works best for you (1 second or 5 seconds)
+1. Go to CloudWatch Console at https://console.aws.amazon.com/cloudwatch
+2. Create a dashboard called “worker-safety-dashboard-your-name”
+3. Choose Line in the widget
+4. Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat.
+5. Next, set “Auto-refresh” to the smallest interval possible (1h), and change the “Period” to whatever works best for you (1 second or 5 seconds)
 
 ### View Output in Web Dashboard
 
