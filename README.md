@@ -13,6 +13,48 @@ In this lab your will the following:
 
 ## Modules
 
+### Register your DeepLens Device
+If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
+
+To configure your AWS account for AWS DeepLens
+
+1. Sign in to the AWS Management Console for AWS DeepLens at https://console.aws.amazon.com/deeplens/home?region=us-east-1#firstrun.
+
+2. Choose Register device. If you don't see a Register device button, choose Devices on the main navigation pane.
+
+3. In the Name your device section on the Configure your AWS account page, type a name (e.g., lab1-deepLens) for your AWS DeepLens device in the Device name text field .
+4. The device name can have up to 100 characters. Valid characters are a-z, A-Z, 0-9, and - (hyphen) only. 
+5. In the Permissions section, choose Create roles for the AWS DeepLens console to create the required IAM roles with relevant permissions on your behalf.
+- After the roles are successfully created, you'll be informed that you have the necessary permissions for setting the AWS DeepLens device. If the roles already exist in your account, the same message will be displayed.
+6. In the Certificate section, choose Download certificate to save the device certificate.
+7. The downloaded device certificate is a .zip file. Don’t unzip it.
+
+**Important**
+
+Certificates aren't reusable. You must generate a new certificate every time you register your device.
+
+8. After the certificate is downloaded, choose Next to proceed to joining your computer to your device's (AMDC-NNNN) Wi-Fi network in order to start the device setup application hosted on the device. 
+9. Plug in your AWS DeepLens device to an AC power outlet. Press the power button on the front of the device to turn the device on. 
+10. Wait until the device has entered into setup mode when the Wi-Fi indicator (middle LED) on the front of the device starts to flash. 
+    - *Note*: If Wi-Fi indicator (middle LED) does not flash, the device in no longer in the setup mode. To turn on the device's setup mode again, press CAREFULLY a paper clip into the reset pinhole on the back of the device. After you hear a click, wait about 20 seconds for the Wi-Fi indicator to blink. 
+11. Open the network management tool on your computer. Choose your device's SSID from the list of available Wi-Fi networks and type the password for the device's network. The SSID and password are printed on the bottom of your device. The device's Wi-Fi network's SSID has the AMDC-NNNN format
+12. After successfully connecting your computer to the device's Wi-Fi network, you're now ready to launch the device setup application to configure your device. 
+
+### Create the *object-detection* model
+1. Using your browser, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
+2. Choose Projects, then choose Create new project.
+3. On the Choose project type screen
+  - Choose Use a project template, then choose Object detection.
+  - Scroll to the bottom of the screen, then choose Next.
+4. On the Specify project details screen
+   - In the Project information section:
+      - Project name: your-user-id-object-detection(example: lab1-object-detection)
+      - Description: Detect objects.
+  - Scroll to the bottom of the screen, then click Create.
+5. Click on "*Models*" the left navigation of the console and make sure that a model called "*deeplens-object-detection*" is available.
+
+**Important**: It's highly critical for the lab rest of the lab until this model is created.
+
 ### Setup IAM Role for Cloud Lambda
 
 1. Go to IAM in AWS Console at https://console.aws.amazon.com/iam
@@ -20,13 +62,13 @@ In this lab your will the following:
 3. Click create role
 4. Under AWS service, select Lambda and click Next: Permissions
 5. Under Attach permission policies
-    1. search S3 and select AmazonS3FullAccess
-    2. search Rekognition and select checkbox next to AmazonRekognitionReadOnlyAccess
-    3. search cloudwatch and select checkbox next to CloudWatchLogsFullAccess and CloudWatchFullAccess
-    4. search iot and select AWSIotDataAccess
-    5. search lambda and select checkbox next to AWSLambdaFullAccess
+    1. search S3 and select *AmazonS3FullAccess*
+    2. search Rekognition and select checkbox next to *AmazonRekognitionReadOnlyAccess*
+    3. search cloudwatch and select checkbox next to *CloudWatchLogsFullAccess* and *CloudWatchFullAccess*
+    4. search iot and select *AWSIotDataAccess*
+    5. search lambda and select checkbox next to *AWSLambdaFullAccess*
 6. Click Next: Tags and Next: Review
-7. Name is “RecognizeObjectLambdaRole”
+7. Name the role “*RecognizeObjectLambdaRole*”
 8. Click Create role
 
 
