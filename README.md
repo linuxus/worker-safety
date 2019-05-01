@@ -110,13 +110,20 @@ Certificates aren't reusable. You must generate a new certificate every time you
 2. Click on Create bucket.
 3. Under Name and region:
 
-* Bucket name: Enter a bucket name- your name-worker-safety (example: kashif-worker-safety)
+* Bucket name: Enter a bucket name- your name-worker-safety (example: lab1-worker-safety)
 * Choose US East (N. Virginia)
 * Click Next
 
 1. Leave default values for Configure Options screen and click Next
 2.  Under Set permissions, uncheck all four checkboxes. NOTE: This step would allow us to make objects in your S3 bucket public. We are doing this to reduce few steps in the module, but you should not do that for production workloads. Instead it is recommended to use S3 Pre-Signed URLs to give time limited access to objects in S3.
 3. Click Next, and click Create bucket.
+
+- Add the proper policy in order to allow DeepLens inference Lambda to upload images to S3:
+4. Go to IAM in AWS Console at https://console.aws.amazon.com/iam
+5. Click on Roles
+6. Search for "*AWSDeepLensGreengrassGroupRole*" and click on the role
+7. Click on Attach Policies
+8. Search for "*AmazonS3FullAccess*", click on the checkbox and click on Attach Policy
 
 ### Create Cloud Lambda <a id="cloudlambda"></a>
 
@@ -161,15 +168,16 @@ Certificates aren't reusable. You must generate a new certificate every time you
 5. Select greengrass-hello-world and click Configure.
 6. Under Basic information:
 
-* Name: name-worker-safety-deeplens (example: kashif-worker-safety-deeplens)
+* Name: name-worker-safety-deeplens (example: lab1-worker-safety-deeplens)
 * Role: Choose and existing role
 * Existing role: DeepLensInferenceLambdaRole
 * Click Create function.
 
-7. Copy the code from [deeplens-lambda.py](./code/deeplens-lambda.py) and paste under Function code for the lambda function. You can find the python file in your resources section.
+7. Copy the code from [deeplens-lambda.py](./code/deeplens-lambda.py):
+    - Click on the "*Raw*" button. Select the entire code and paste under Function code for the lambda function.
 8. Go to line 34 and modify line below with the name of your S3 bucket created in the earlier step.
 
-* bucket_name = "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET"
+* bucket_name = "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET" (example: lab1-worker-safety)
 
 9. Click Save.
 10. Click on Actions, and then "Publish new version".
@@ -186,10 +194,10 @@ Certificates aren't reusable. You must generate a new certificate every time you
 4. On the Specify project details screen
 
     * Under Project information section:
-        * Project name: your-user-name-worker-safety (example: kashif-worker-safety)
+        * Project name: your-user-name-worker-safety (example: lab1-worker-safety)
     * Under Project content:
         * Click on Add model, click on radio button for deeplens-object-detection and click Add model.
-        * Click on Add function, click on radio button for your lambda function (example: kashif-worker-safety-deeplens) lambda function and click Add function.
+        * Click on Add function, click on radio button for your lambda function (example: lab1-worker-safety-deeplens) lambda function and click Add function.
 * Click Create. This returns you to the Projects screen.
 
 ### Deploy DeepLens Project <a id="deploydlproject"></a>
