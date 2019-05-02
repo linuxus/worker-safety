@@ -244,12 +244,12 @@ Certificates aren't reusable. You must generate a new certificate every time you
 18. From terminal go to the root of the unzipped folder and run “npm install”
 19. Next, run “./node_modules/.bin/webpack —config webpack.config.js”
 20. This will create the build we can easily deploy.
-21. Go to S3 bucket, and create a folder web
-22. From web folder in S3 bucket click upload and select bundle.js, index.html and style.css.
-23. From Set permission, Choose Grant public read access to the objects. and click Next
-24. Leave default settings for following screens and click upload.
-25. Click on index.html and click on the link to open the web page in browser.
-26. In the address URL append ?iottopic=NAME-OF-YOUR-IOT-TOPIC. This is the same value you added to Lambda environment variable and hit Enter.
+21. Go to the same S3 bucket (example: lab1-worker-safety), and create a folder called "*web*"
+22. Go inside the web folder in S3 bucket click upload and select bundle.js, index.html and style.css. Click Next.
+23. From the Manage public permission, Choose Grant public read access to the objects. and click Next
+24. Leave default settings for following screens and click "*Upload*".
+25. Click on index.html and click on the link at the bottom under "Open URL" to open the web page in browser.
+26. In the address URL append ?iottopic=NAME-OF-YOUR-IOT-TOPIC (example: ?iottopic=worker-safety-demo-cloud). This is the same value you added to Lambda environment variable and hit Enter.
 27. You should now see images coming from DeepLens with a green or red box around the person.
 
 
