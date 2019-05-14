@@ -10,18 +10,22 @@ In this lab you will be achieving the following:
 1. [Architecture](#Architecture)
 2. [Modules](#Modules)
 3. [Register your DeepLens Device](#registerdl)
-4. [Create the *object-detection* model](#createmodel)
-5. [Setup IAM Role for Cloud Lambda](#cloudiamrole)
-6. [Setup IAM Role for DeepLens Lambda](#dliamrole)
-7. [Create S3 bucket](#s3create)
-8. [Create Cloud Lambda](#cloudlambda)
-9. [Create DeepLens Inference Lambda Function](#inferencelambda)
-10. [Create DeepLens Project](#createdlproject)
-11. [Deploy DeepLens Project](#deploydlproject)
-12. [View Output in IoT](#iotoutput)
-13. [View Output in CloudWatch](#cloudwatchoutput)
-14. [View Output in Web Dashboard](#dashboardoutput)
-15. [Clean Up](#cleanup)
+4. [LAB 1 - Create an *object-detection* project](#createmodel)
+    - [Deploy your project](#deployproject)
+    - [View your project output](#projectoutput)
+
+5. [LAB 2 - Create Worker Safety Project](#workersafetyproject):
+    - [Step 1: Setup IAM Role for Cloud Lambda](#cloudiamrole)
+     - [Step 2: Setup IAM Role for DeepLens Lambda](#dliamrole)
+     - [Step 3: Create S3 bucket](#s3create)
+    - [Step 4: Create Cloud Lambda](#cloudlambda)
+    - [Step 5: Create DeepLens Inference Lambda Function](#inferencelambda)
+    - [Step 6: Create DeepLens Project](#createdlproject)
+    - [Step 7: Deploy DeepLens Project](#deploydlproject)
+     - [Step 8: View Output in IoT](#iotoutput)
+     - [Step 9: View Output in CloudWatch](#cloudwatchoutput)
+    - [Step 10: View Output in Web Dashboard](#dashboardoutput)
+6. [Clean Up](#cleanup)
 
 ## Architecture
 
@@ -29,7 +33,7 @@ In this lab you will be achieving the following:
 
 ## Modules
 
-### Register your DeepLens Device <a id="registerdl"></a>
+## Register your DeepLens Device <a id="registerdl"></a>
 If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
 
 To configure your AWS account for AWS DeepLens
@@ -56,26 +60,154 @@ Certificates aren't reusable. You must generate a new certificate every time you
 11. Open the network management tool on your computer. Choose your device's SSID from the list of available Wi-Fi networks and type the password for the device's network. The SSID and password are printed on the bottom of your device. The device's Wi-Fi network's SSID has the AMDC-NNNN format
 12. After successfully connecting your computer to the device's Wi-Fi network, you're now ready to launch the device setup application to configure your device. 
 
-### Create the *object-detection* model <a id="createmodel"></a>
+
+### Step 2: LAB 1 - Create an *object-detection* project using DeepLens<a id="createmodel1"></a>
+
+### Create Your Project
+
 1. Using your browser, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
 3. On the Choose project type screen
-  - Choose Use a project template, then choose Object detection.
-  - Scroll to the bottom of the screen, then choose Next.
+- Choose Use a project template, then choose Object detection.
+
+![](assets/projecttemplate.png)
+
+- Scroll to the bottom of the screen, then choose Next.
 4. On the Specify project details screen
    - In the Project information section:
-      - Project name: your-user-id-object-detection(example: lab1-object-detection)
-      - Description: Detect objects.
-  - Scroll to the bottom of the screen, then click Create.
-5. Click on "*Models*" the left navigation of the console and make sure that a model called "*deeplens-object-detection*" is available.
+      - Either accept the default name for the project, or type a name you prefer.
+      - Either accept the default description for the project, or type a description you prefer.
+   - In the Project content section:
+      - Model—make sure the model is deeplens-object-detection. If it isn't, remove the current model then choose Add model. From the list of models, choose deeplens-object-detection.
+      - Function—make sure the function is deeplens-object-detection. If it isn't, remove the current function then choose Add function. From the list of functions, choose deeplens-object-detection.
 
-**Important**: It's highly critical for the lab rest of the lab until this model is created.
+      ![](assets/projectcontent.png)
 
-6. Once you've confirmed that the object-detection model has been created delete the recently created project.
-    - Click on *Projects* on the left navigation and select the project name (example: lab1-object-detection)
-    - Click on the Delete button on the top right hand side
+  - Choose Create.
 
-### Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
+This returns you to the Projects screen where the project you just created is listed with your other projects.
+
+## Deploy your project <a id="deployproject"></a>
+
+Next you will deploy the Object Detection project you just created.
+
+1. From Deeplens console, On the Projects screen, choose the radio button to the left of your project name, then choose Deploy to device.
+
+![](assets/projecthome.png)
+
+2. On the Target device screen, from the list of AWS DeepLens devices, choose the radio button to the left of the device that you want to deploy this project to. An AWS DeepLens device can have only one project deployed to it at a time.
+
+![](assets/targetdevice.png)
+
+3. Choose Review.
+
+   This will take you to the Review and deploy screen.
+
+   If a project is already deployed to the device, you will see an error message
+   "There is an existing project on this device. Do you want to replace it?
+   If you Deploy, AWS DeepLens will remove the current project before deploying the new project."
+
+4. On the Review and deploy screen, review your project and choose Deploy to deploy the project.
+
+   This will take you to to device screen, which shows the progress of your project deployment.
+
+## View your project output <a id="projectoutput"></a>
+
+You need MPlayer to view the project output from Deeplens device. Instructions are provided below for installing this on Mac and Windows.
+
+### For Mac
+1. Install MPlayer by using command below in the terminal window:
+
+```
+brew install mplayer
+```
+
+2. Wait until the project is deployed and you see the message Deployment of project Face-detection, version 0 succeeded. After the project is successfully deployed, use the command below from terminal window to view project output stream:
+
+```
+ssh aws_cam@<IP Address of your deeplens device> cat /tmp/results.mjpeg | mplayer -demuxer lavf -lavfdopts format=mjpeg:probesize=32 -
+```
+Example:
+```
+ssh aws_cam@192.168.86.120 cat /tmp/results.mjpeg | mplayer -demuxer lavf -lavfdopts format=mjpeg:probesize=32 -
+```
+
+### For Windows
+
+1. You will need to use 7zip to extract the MPlayer executable. You can install 7zip by running the executable at the following link:
+* 64-bit: http://www.7-zip.org/a/7z1801-x64.exe
+* 32-bit: http://www.7-zip.org/a/7z1801.exe
+
+2. After you have installed 7zip, download the MPlayer 7z archive at the following link, and then use 7zip to extract the contents of the archive:
+* 64-bit: http://sourceforge.net/projects/mplayerwin/files/MPlayer-MEncoder/r38017/mplayer-svn-38017-x86_64.7z/download
+* 32-bit: http://sourceforge.net/projects/mplayerwin/files/MPlayer-MEncoder/r38017/mplayer-svn-38017.7z/download
+
+Remember the directory in which you extracted the contents of the archive, because in the next step, you will need to provide the full path to the MPlayer executable that you extracted from that archive.
+
+#### To view the project output stream
+
+Wait until the project is deployed and you see the message Deployment of project Face-detection, version 0 succeeded. After the project is successfully deployed, follow these steps to view the project output stream:
+
+Option 1. If you want to use Windows Subsystem for Linux (e.g. running bash or any Linux distro installed from Windows Store), use the following command in your Windows command prompt:
+```
+ssh aws_cam@<IP Address of your deeplens device> cat /tmp/results.mjpeg | /mnt/c/your-path-to-mplayer-exe-here/mplayer.exe -demuxer lavf -lavfdopts format=mjpeg:probesize=32 –
+```
+Example:
+```
+ssh aws_cam@192.168.0.120 cat /tmp/results.mjpeg | /mnt/c/your-path-to-mplayer-exe-here/mplayer.exe -demuxer lavf -lavfdopts format=mjpeg:probesize=32 –
+```
+
+Option 2. If you have ssh installed directly in Windows 10 (using Fall Creators Update or later, in optional features), use the following command in your Windows command prompt:
+```
+ssh aws_cam@<IP Address of your deeplens device> cat /tmp/results.mjpeg | c:\Your-path-to-mplayer-exe-here\mplayer.exe -demuxer lavf -lavfdopts format=mjpeg:probesize=32 –
+```
+Example:
+```
+ssh aws_cam@192.168.0.120 cat /tmp/results.mjpeg | c:\Your-path-to-mplayer-exe-here\mplayer.exe -demuxer lavf -lavfdopts format=mjpeg:probesize=32 –
+```
+If you don't have Windows 10 OpenSSH client installed on your machine follow the below instructions:
+
+1. First find out the exact feature name, as it might change with future Windows updates. Open a Windows PowerShell prompt and type the following command:
+
+```batch
+PS C:\WINDOWS\system32> dism /online /get-capabilities | findstr /i "OpenSSH.Client"
+Capability Identity : OpenSSH.Client~~~~0.0.1.0
+```
+
+2. Then install the capability for example:
+
+```
+PS C:\WINDOWS\system32> dism /online /Add-Capability /CapabilityName:OpenSSH.Client~~~~0.0.1.0
+
+Deployment Image Servicing and Management tool
+Version: 10.0.16299.15
+
+Image Version: 10.0.16299.64
+
+[==========================100.0%==========================]
+```
+### View your project log messages in IoT:
+
+You can also view the log messages that your project's Lambda function running on DeepLens device sends to IoT topic.
+
+1. Go to DeepLens in AWS console and then Devices at https://console.aws.amazon.com/deeplens/home?region=us-east-1#devices
+2. Click on the name of your DeepLens device and on the next screen Copy the IoT topic under Project ouput.
+
+![](assets/dliottopic.png)
+
+3. Go to IoT in AWS Console at https://console.aws.amazon.com/iot/home?region=us-east-1#/dashboard
+4. Click on Test in the left navigation.
+5. Past the IoT topic in the textbox under Subscription topic and click Subscribe to topic
+6. You should now see log messages published from DeepLens device to IoT.
+
+![](assets/dlmessages.png)
+
+### Completion:
+You have create and deployed object detection project to your Deeplens device.
+
+## LAB 2 - Create and Deploy Worker Safety Project <a id="workersafetyproject"></a>
+
+### Step 1: Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
 
 1. Go to IAM in AWS Console at https://console.aws.amazon.com/iam
 2. Click on Roles
@@ -92,7 +224,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 8. Click Create role
 
 
-### Setup IAM Role for DeepLens Lambda <a id="dliamrole"></a>
+### Step 2: Setup IAM Role for DeepLens Lambda <a id="dliamrole"></a>
 
 1. Click create role
 2. Under AWS service, select Lambda and click Next: Permissions
@@ -104,7 +236,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 6. Click Create role
 
 
-### Create S3 bucket <a id="s3create"></a>
+### Step 3: Create S3 bucket <a id="s3create"></a>
 
 1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
 2. Click on Create bucket.
@@ -125,7 +257,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 7. Click on Attach Policies
 8. Search for "*AmazonS3FullAccess*", click on the checkbox and click on Attach Policy
 
-### Create Cloud Lambda <a id="cloudlambda"></a>
+### Step 4: Create Cloud Lambda <a id="cloudlambda"></a>
 
 1. Go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
 2. Click on Create function.
@@ -159,7 +291,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 * Click Add.
 * Click Save on the top right to save changed to Lambda function.
 
-### Create DeepLens Inference Lambda Function <a id="inferencelambda"></a>
+### Step 5: Create DeepLens Inference Lambda Function <a id="inferencelambda"></a>
 
 1. Go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/.
 2. Click on Create function.
@@ -183,7 +315,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 10. Click on Actions, and then "Publish new version".
 11. For Version description enter: Detect person and push frame to S3 bucket. and click Publish.
 
-### Create DeepLens Project <a id="createdlproject"></a>
+### Step 6: Create DeepLens Project <a id="createdlproject"></a>
 
 1. Using your browser, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
@@ -200,7 +332,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
         * Click on Add function, click on radio button for your lambda function (example: lab1-worker-safety-deeplens) lambda function and click Add function.
 * Click Create. This returns you to the Projects screen.
 
-### Deploy DeepLens Project <a id="deploydlproject"></a>
+### Step 7: Deploy DeepLens Project <a id="deploydlproject"></a>
 
 1. From DeepLens console, On the Projects screen, choose the radio button to the left of your project name, then choose Deploy to device.
 2. On the Target device screen, from the list of AWS DeepLens devices, choose the radio button to the left of the device where you want to deploy this project.
@@ -208,13 +340,13 @@ Certificates aren't reusable. You must generate a new certificate every time you
     If a project is already deployed to the device, you will see a warning message "There is an existing project on this device. Do you want to replace it? If you Deploy, AWS DeepLens will remove the current project before deploying the new project."
 4. On the Review and deploy screen, review your project and click Deploy to deploy the project. This will take you to to device screen, which shows the progress of your project deployment.
 
-### View Output in IoT <a id="iotoutput"></a>
+### Step 8: View Output in IoT <a id="iotoutput"></a>
 
 1. Go to IoT Console at https://console.aws.amazon.com/iot/home
 2. Under Subscription topic enter topic name you entered as environment variable for Lambda in earlier step (example: worker-safety-demo-cloud) and click Subscribe to topic.
 3. You should now see JSON message with a list of people detected and whether they are wearing safety hats or not.
 
-### View Output in CloudWatch <a id="cloudwatchoutput"></a>
+### Step 9: View Output in CloudWatch <a id="cloudwatchoutput"></a>
 
 1. Go to CloudWatch Console at https://console.aws.amazon.com/cloudwatch
 2. Create a dashboard called “worker-safety-dashboard-your-name”
@@ -222,7 +354,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 4. Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat.
 5. Next, set “Auto-refresh” to the smallest interval possible (1h), and change the “Period” to whatever works best for you (1 second or 5 seconds)
 
-### View Output in Web Dashboard <a id="dashboardoutput"></a>
+### Step 10: View Output in Web Dashboard <a id="dashboardoutput"></a>
 
 1. Go to AWS Cognito console at https://console.aws.amazon.com/cognito
 2. Click on Manage Identity Pools
