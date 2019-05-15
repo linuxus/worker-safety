@@ -193,13 +193,13 @@ You have created and deployed object detection project to your Deeplens device.
 * Under existing role choose: RecognizeObjectLambdaRole
 * Click Create function
 
-5. Under Environment variables, add a variable:
+5. Scroll down to Environment variables, add a variable:
 
 * Key: iot_topic
 * Value: worker-safety-demo-cloud
 
-6. Download [lambda.zip](./code/lambda.zip).
-7. Under Function code:
+6. On a new tab click on [lambda.zip](./code/lambda.zip) and click on *Download* button the next page.
+7. Once the download is completed return to the Lambda tab and Under Function code:
 
 * Code entry type: Upload a zip file
 * Under Function package, click Upload and select the zip file you downloaded in earlier step.
