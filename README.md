@@ -224,11 +224,11 @@ You have created and deployed object detection project to your Deeplens device.
 6. Under Basic information:
 
 * Name: *lab#*-worker-safety-deeplens (example: lab1-worker-safety-deeplens)
-* Under execution Role: Choose use an existing role
-* Under Existing role choose: DeepLensInferenceLambdaRole
+* Under execution role: Choose use an existing role
+* Under existing role: Choose DeepLensInferenceLambdaRole
 * Click Create function.
 
-7. Copy the code from [deeplens-lambda.py](./code/deeplens-lambda.py):
+7. On a new browser tab click on [deeplens-lambda.py](./code/deeplens-lambda.py):
     - Click on the "*Raw*" button. Select the entire code and paste under Function code for the lambda function.
 8. Go to line 34 and modify line below with the name of your S3 bucket created in the earlier step.
 
