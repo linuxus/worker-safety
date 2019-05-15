@@ -188,8 +188,9 @@ You have created and deployed object detection project to your Deeplens device.
 
 * Name: worker-safety-cloud
 * Runtime: Python 3.7
-* Role: Choose and existing role
-* Existing role: RecognizeObjectLambdaRole
+* Under permissions, expand Choose or Create and execution role
+* Under Execution role, choose "Use an existing role"
+* Under existing role choose: RecognizeObjectLambdaRole
 * Click Create function
 
 5. Under Environment variables, add a variable:
