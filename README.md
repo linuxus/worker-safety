@@ -102,6 +102,8 @@ Next you will deploy the Object Detection project you just created.
    "There is an existing project on this device. Do you want to replace it?
    If you Deploy, AWS DeepLens will remove the current project before deploying the new project."
 
+   If you receive an error message stating "Cloud not find a project" please omit and proceed.
+
 4. On the Review and deploy screen, review your project and choose Deploy to deploy the project.
 
    This will take you to to device screen, which shows the progress of your project deployment.
