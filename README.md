@@ -205,11 +205,11 @@ You have created and deployed object detection project to your Deeplens device.
 * Under Function package, click Upload and select the zip file you downloaded in earlier step.
 * Click Save.
 
-8. Under Add triggers, select S3.
+8. Scroll at the top of the screeen and under Add triggers, select S3.
 9. Under Configure triggers:
 
 * Bucket: Select the S3 bucket you just created in earlier step.
-* Event type: Leave default Object Created (All)
+* Event type: All Object create events
 * Leave defaults for Prefix and Suffix and make sure Enable trigger checkbox is checked.
 * Click Add.
 * Click Save on the top right to save changed to Lambda function.
@@ -223,9 +223,9 @@ You have created and deployed object detection project to your Deeplens device.
 5. Select greengrass-hello-world and click Configure.
 6. Under Basic information:
 
-* Name: name-worker-safety-deeplens (example: lab1-worker-safety-deeplens)
-* Role: Choose and existing role
-* Existing role: DeepLensInferenceLambdaRole
+* Name: *lab#*-worker-safety-deeplens (example: lab1-worker-safety-deeplens)
+* Under execution Role: Choose use an existing role
+* Under Existing role choose: DeepLensInferenceLambdaRole
 * Click Create function.
 
 7. Copy the code from [deeplens-lambda.py](./code/deeplens-lambda.py):
