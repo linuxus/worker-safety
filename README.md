@@ -240,7 +240,7 @@ You have created and deployed object detection project to your Deeplens device.
 
 ### Step 6: Create DeepLens Project <a id="createdlproject"></a>
 
-1. Using your browser, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
+1. On new tab, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
 3. On the Choose project type screen
 
@@ -265,14 +265,14 @@ You have created and deployed object detection project to your Deeplens device.
 
 ### Step 8: View Output in IoT <a id="iotoutput"></a>
 
-1. Go to IoT Console at https://console.aws.amazon.com/iot/home
-2. Under Subscription topic enter topic name you entered as environment variable for Lambda in earlier step (example: worker-safety-demo-cloud) and click Subscribe to topic.
+1. On new tab, open the AWS IoT Console at https://console.aws.amazon.com/iot/home
+2. Under Subscription topic enter topic name *worker-safety-demo-cloud* and click Subscribe to topic.
 3. You should now see JSON message with a list of people detected and whether they are wearing safety hats or not.
 
 ### Step 9: View Output in CloudWatch <a id="cloudwatchoutput"></a>
 
-1. Go to CloudWatch Console at https://console.aws.amazon.com/cloudwatch
-2. Create a dashboard called “worker-safety-dashboard-your-name”
+1. On new tab, open the AWS CloudWatch Console at https://console.aws.amazon.com/cloudwatch
+2. Go to Dashboard on the left menu and click create dashboard called “*lab#*-worker-safety-dashboard”
 3. Choose Line in the widget
 4. Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat.
 5. Next, set “Auto-refresh” to the smallest interval possible (1h), and change the “Period” to whatever works best for you (1 second or 5 seconds)
