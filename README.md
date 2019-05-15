@@ -232,9 +232,7 @@ You have created and deployed object detection project to your Deeplens device.
     - Click on the "*Raw*" button.
     - Select the entire code and copy.
     - Go back to the Lambda Management console tab and under function code replace the existing code with the code copied in the previous step.
-8. Go to line 34 and modify line below with the name of your S3 bucket created in the earlier step.
-
-* bucket_name = "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET" (example: lab1-worker-safety)
+8. Go to line 34 of the new code and replace . "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET" with *lab#*-worker-safety
 
 9. Click Save.
 10. Click on Actions, and then "Publish new version".
