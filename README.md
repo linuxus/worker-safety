@@ -280,33 +280,11 @@ You have created and deployed object detection project to your Deeplens device.
 
 ### Step 10: View Output in Web Dashboard <a id="dashboardoutput"></a>
 
-1. Go to AWS Cognito console at https://console.aws.amazon.com/cognito
-2. Click on Manage Identity Pools
-3. Click on Create New Identity Pool
-4. Enter “awsworkersafety” for Identity pool name
-5. Select Enable access to unauthenticated identities
-- We are using using Unauthenticated identity option to keep things simple in the demo. For real world application where you only want authorized users to access the app you should configure Authentication providers.
-7. Click Create Pool
-8. Expand View Details
-9. Under: Your unauthenticated identities would like access to Cognito, expand View Policy Document and click Edit.
-10. Click Ok for Edit Policy prompt.
-11. Copy JSON from [cognitopolicy.json](./code/cognitopolicy.json) and paste in the text box.
-12. Click Allow
-13. Make note of the Identity Pool as you will need it in following steps.
-14. Got to IoT in AWS Console at: https://console.aws.amazon.com/iot
-15. Click on settings and make note of Endpoint, you will need this the following step.
-16. Download [webdashboard.zip](./code/webdashboard.zip) and unzip on your local drive.
-17. Edit aws-configuration.js and update poolId with Cognito Identity Pool Id and host with IoT EndPoint you got in earlier steps.
-18. From terminal go to the root of the unzipped folder and run “npm install”
-19. Next, run “./node_modules/.bin/webpack —config webpack.config.js”
-20. This will create the build we can easily deploy.
-21. Go to the same S3 bucket (example: lab1-worker-safety), and create a folder called "*web*"
-22. Go inside the web folder in S3 bucket click upload and select bundle.js, index.html and style.css. Click Next.
-23. From the Manage public permission, Choose Grant public read access to the objects. and click Next
-24. Leave default settings for following screens and click "*Upload*".
-25. Click on index.html and click on the link at the bottom under "Open URL" to open the web page in browser.
-26. In the address URL append ?iottopic=NAME-OF-YOUR-IOT-TOPIC (example: ?iottopic=worker-safety-demo-cloud). This is the same value you added to Lambda environment variable and hit Enter.
-27. You should now see images coming from DeepLens with a green or red box around the person.
+1. On new tab, open the AWS S3 Console at https://console.aws.amazon.com/s3
+2. Open the your lab bucket (folder) called *lab#*-worker-safety (example: *lab1*-worker-safety)
+3. Click on index.html and click on the link at the bottom under "Open URL" to open the web page in browser.
+4. In the address URL append ?iottopic=worker-safety-demo-cloud. This is the same value you added to Lambda environment variable and hit Enter.
+5. You should now see images coming from DeepLens with a green or red box around the person and detecting whether the peron is wearing a safety helmet
 
 
 ## Clean Up <a id="cleanup"></a>
