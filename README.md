@@ -61,7 +61,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 12. After successfully connecting your computer to the device's Wi-Fi network, you're now ready to launch the device setup application to configure your device. 
 
 
-### Step 2: LAB 1 - Create an *object-detection* project using DeepLens<a id="createmodel1"></a>
+### Step 2: LAB 1 - Create an *object-detection* project using DeepLens<a id="createmodel"></a>
 
 ### Create Your Project
 
