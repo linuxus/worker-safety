@@ -273,9 +273,10 @@ You have created and deployed object detection project to your Deeplens device.
 
 1. On new tab, open the AWS CloudWatch Console at https://console.aws.amazon.com/cloudwatch
 2. Go to Dashboard on the left menu and click create dashboard called “*lab#*-worker-safety-dashboard”
-3. Choose Line in the widget
+3. In the popup window select widget type, *Line*
 4. Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat.
 5. Next, set “Auto-refresh” to the smallest interval possible (1h), and change the “Period” to whatever works best for you (1 second or 5 seconds)
+6. Review the dashboard graph
 
 ### Step 10: View Output in Web Dashboard <a id="dashboardoutput"></a>
 
