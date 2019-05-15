@@ -113,19 +113,19 @@ Next you will deploy the Object Detection project you just created.
 You can also view the log messages that your project's Lambda function running on DeepLens device sends to IoT topic.
 
 1. Once the deployment has been successful (Green message at the top), click on *Devices* the left menu.
-2. Click on the name of your DeepLens device and on the next screen Copy the IoT topic under Project ouput.
+2. Click on the name of your DeepLens device and on the next screen click on Copy button on the IoT topic under Project ouput.
 
 ![](assets/dliottopic.png)
 
-3. Go to IoT in AWS Console at https://console.aws.amazon.com/iot/home?region=us-east-1#/dashboard
+3. On a new browser tap open the AWS IoT Console at https://console.aws.amazon.com/iot/home?region=us-east-1#/dashboard
 4. Click on Test in the left navigation.
-5. Past the IoT topic in the textbox under Subscription topic and click Subscribe to topic
+5. Paste the IoT topic in the textbox under Subscription topic and click Subscribe to topic
 6. You should now see log messages published from DeepLens device to IoT.
 
 ![](assets/dlmessages.png)
 
 ### Completion:
-You have create and deployed object detection project to your Deeplens device.
+You have created and deployed object detection project to your Deeplens device.
 
 ## LAB 2 - Create and Deploy Worker Safety Project <a id="workersafetyproject"></a>
 
@@ -181,7 +181,7 @@ You have create and deployed object detection project to your Deeplens device.
 
 ### Step 4: Create Cloud Lambda <a id="cloudlambda"></a>
 
-1. Go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
+1. In a new browser tap go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
 2. Click on Create function.
 3. Under Create function, Author from scratch should be selected as default.
 4. Under Author from scratch:
