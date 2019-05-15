@@ -181,7 +181,7 @@ You have created and deployed object detection project to your Deeplens device.
 
 ### Step 4: Create Cloud Lambda <a id="cloudlambda"></a>
 
-1. In a new browser tap go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
+1. In a new browser tab, go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
 2. Click on Create function.
 3. Under Create function, Author from scratch should be selected as default.
 4. Under Author from scratch:
