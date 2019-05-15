@@ -275,7 +275,7 @@ You have created and deployed object detection project to your Deeplens device.
 2. Go to Dashboard on the left menu and click create dashboard called “*lab#*-worker-safety-dashboard”
 3. In the popup window select widget type, *Line* and click configure
 4. Under Custom Namespaces, select “string”, “Metrics with no dimensions”, and then select PersonsWithSafetyHat and PersonsWithoutSafetyHat. And click on create widget.
-5. In the dropdown menu on top right menu, check the “Auto-refresh” option to 10 seconds.
+5. In the dropdown menu on top right, check the “Auto-refresh” option and set to 10 seconds.
 6. Review the dashboard graph
 
 ### Step 10: View Output in Web Dashboard <a id="dashboardoutput"></a>
