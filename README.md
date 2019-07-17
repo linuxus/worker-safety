@@ -38,8 +38,8 @@ If you recycle a device from another user, make sure that the previous user has 
 
 To configure your AWS account for AWS DeepLens
 
-#1. Sign in to the AWS Management Console for AWS DeepLens at <a href="https://console.aws.amazon.com/deeplens/home?region=us-east-1#firstrun" target="_blank">AWS Managment Console</a>.
-[Example](https://amazon.com){target=_blank}
+1. Sign in to the AWS Management Console for AWS DeepLens at <a href="https://console.aws.amazon.com/deeplens/home?region=us-east-1#firstrun" target="_blank">AWS Managment Console</a>.
+
 
 2. Choose Register device. If you don't see a Register device button, choose Devices on the main navigation pane.
 
