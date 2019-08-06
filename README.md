@@ -33,7 +33,7 @@ In this lab you will be achieving the following:
 
 ## Modules
 
-<span style="color:red">*Note:* **To keep this page open while following the instructions, hold down the control button (CRTL) and click on the link for Windows machine or command + click on Mac OS machine** </span>
+<span style="color:red">*Note:*</span> **To keep this page open while following the instructions, hold down the control button (CRTL) and click on the link for Windows machine or command + click on Mac OS machine** 
 
 ### Step 1: Lab 1 - Register your DeepLens Device <a id="registerdl"></a>
 If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
