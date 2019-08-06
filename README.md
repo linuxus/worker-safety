@@ -33,7 +33,7 @@ In this lab you will be achieving the following:
 
 ## Modules
 
-## Register your DeepLens Device <a id="registerdl"></a>
+### Step 1: Lab 0 - Register your DeepLens Device <a id="registerdl"></a>
 If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
 
 To configure your AWS account for AWS DeepLens
