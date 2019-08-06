@@ -33,7 +33,7 @@ In this lab you will be achieving the following:
 
 ## Modules
 
-### Step 1: Lab 0 - Register your DeepLens Device <a id="registerdl"></a>
+### Step 1: Lab 1 - Register your DeepLens Device <a id="registerdl"></a>
 If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
 
 To configure your AWS account for AWS DeepLens
@@ -62,7 +62,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 12. After successfully connecting your computer to the device's Wi-Fi network, you're now ready to launch the device setup application to configure your device. 
 
 
-### Step 2: LAB 1 - Create an *object-detection* project using DeepLens<a id="createmodel"></a>
+### Step 2: LAB 2 - Create an *object-detection* project using DeepLens<a id="createmodel"></a>
 
 ### Create Your Project
 
@@ -128,7 +128,7 @@ You can also view the log messages that your project's Lambda function running o
 ### Completion:
 You have created and deployed object detection project to your Deeplens device.
 
-## LAB 2 - Create and Deploy Worker Safety Project <a id="workersafetyproject"></a>
+## LAB 3 - Create and Deploy Worker Safety Project <a id="workersafetyproject"></a>
 
 ### Step 1: Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
 
