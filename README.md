@@ -9,12 +9,12 @@ In this lab you will be achieving the following:
 ## Table of Contents
 1. [Architecture](#Architecture)
 2. [Modules](#Modules)
-3. [Register your DeepLens Device](#registerdl)
-4. [LAB 1 - Create an *object-detection* project](#createmodel)
+3. [LAB 1 - Register your DeepLens Device](#registerdl)
+4. [LAB 2 - Create an *object-detection* project](#createmodel)
     - [Deploy your project](#deployproject)
     - [View your project output](#projectoutput)
 
-5. [LAB 2 - Create Worker Safety Project](#workersafetyproject):
+5. [LAB 3 - Create Worker Safety Project](#workersafetyproject):
     - [Step 1: Setup IAM Role for Cloud Lambda](#cloudiamrole)
      - [Step 2: Setup IAM Role for DeepLens Lambda](#dliamrole)
      - [Step 3: Create S3 bucket](#s3create)
