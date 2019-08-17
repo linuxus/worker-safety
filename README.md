@@ -35,10 +35,10 @@ In this lab you will be achieving the following:
 
 **Note:** *To keep this page open while following the instructions, hold down the control button (CRTL) and click on the link for Windows machine or command + click on Mac OS machine*
 
-### Step 1: Lab 1 - Register your DeepLens Device <a id="registerdl"></a>
+### Lab 1 - Register your DeepLens Device <a id="registerdl"></a>
 If you recycle a device from another user, make sure that the previous user has deregistered the device before registering it again.
 
-To configure your AWS account for AWS DeepLens
+#### Configure your AWS account for AWS DeepLens
 
 1. Sign in to the AWS Management Console for AWS DeepLens at <a href="https://console.aws.amazon.com/deeplens/home?region=us-east-1#firstrun" target="_blank">AWS Managment Console</a>.
 
@@ -64,9 +64,9 @@ Certificates aren't reusable. You must generate a new certificate every time you
 12. After successfully connecting your computer to the device's Wi-Fi network, you're now ready to launch the device setup application to configure your device. 
 
 
-### Step 2: LAB 2 - Create an *object-detection* project using DeepLens<a id="createmodel"></a>
+### LAB 2 - Create an *object-detection* project using DeepLens<a id="createmodel"></a>
 
-### Create Your Project
+#### Create Your Project
 
 1. Using your browser, open a **new tab** for AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
@@ -85,7 +85,7 @@ Certificates aren't reusable. You must generate a new certificate every time you
 
 This returns you to the Projects screen where the project you just created is listed with your other projects.
 
-## Deploy your project <a id="deployproject"></a>
+#### Deploy your project <a id="deployproject"></a>
 
 Next you will deploy the Object Detection project you just created.
 
@@ -111,7 +111,7 @@ Next you will deploy the Object Detection project you just created.
 
    This will take you to to device screen, which shows the progress of your project deployment.
 
-### View your project log messages in IoT:
+#### View your project log messages in IoT:
 
 You can also view the log messages that your project's Lambda function running on DeepLens device sends to IoT topic.
 
@@ -130,9 +130,9 @@ You can also view the log messages that your project's Lambda function running o
 ### Completion:
 You have created and deployed object detection project to your Deeplens device.
 
-## LAB 3 - Create and Deploy Worker Safety Project <a id="workersafetyproject"></a>
+### LAB 3 - Create and Deploy Worker Safety Project <a id="workersafetyproject"></a>
 
-### Step 1: Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
+#### Step 1: Setup IAM Role for Cloud Lambda <a id="cloudiamrole"></a>
 
 1. Go to IAM in AWS Console at https://console.aws.amazon.com/iam
 2. Click on Roles
@@ -149,7 +149,7 @@ You have created and deployed object detection project to your Deeplens device.
 8. Click Create role
 
 
-### Step 2: Setup IAM Role for DeepLens Lambda <a id="dliamrole"></a>
+#### Step 2: Setup IAM Role for DeepLens Lambda <a id="dliamrole"></a>
 
 1. Click create role
 2. Under AWS service, select Lambda and click Next: Permissions
@@ -161,13 +161,13 @@ You have created and deployed object detection project to your Deeplens device.
 6. Click Create role
 
 
-### Step 3: Create S3 bucket <a id="s3create"></a>
+#### Step 3: Create S3 bucket <a id="s3create"></a>
 
 1. Go to Amazon S3 in AWS Console at https://s3.console.aws.amazon.com/s3/
 2. Click on Create bucket.
 3. Under Name and region:
 
-* Bucket name: Enter a bucket name- your name-worker-safety (example: lab1-worker-safety)
+* Bucket name: Enter a bucket name- your name-worker (example: lab1-worker)
 * Choose US East (N. Virginia)
 * Click Next
 
@@ -182,7 +182,7 @@ You have created and deployed object detection project to your Deeplens device.
 7. Click on Attach Policies
 8. Search for "*AmazonS3FullAccess*", click on the checkbox and click on Attach Policy
 
-### Step 4: Create Cloud Lambda <a id="cloudlambda"></a>
+#### Step 4: Create Cloud Lambda <a id="cloudlambda"></a>
 
 1. In a new browser tab, go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/
 2. Click on Create function.
@@ -210,14 +210,14 @@ You have created and deployed object detection project to your Deeplens device.
 
 8. Scroll at the top of the screeen and under Add triggers, select S3.
 9. Under Configure triggers:
-
-* Bucket: Select the S3 bucket you just created in earlier step.
+* Select S3
+* Bucket: Select the S3 bucket you just created in earlier step (example: *lab1*-worker).
 * Event type: All Object create events
 * Leave defaults for Prefix and Suffix and make sure Enable trigger checkbox is checked.
 * Click Add.
 * Click Save on the top right to save changed to Lambda function.
 
-### Step 5: Create DeepLens Inference Lambda Function <a id="inferencelambda"></a>
+#### Step 5: Create DeepLens Inference Lambda Function <a id="inferencelambda"></a>
 
 1. Go to Lambda in AWS Console at https://console.aws.amazon.com/lambda/.
 2. Click on Create function.
@@ -235,13 +235,13 @@ You have created and deployed object detection project to your Deeplens device.
     - Click on the "*Raw*" button.
     - Select the entire code and copy.
     - Go back to the Lambda Management console tab and under function code replace the existing code with the code copied in the previous step.
-8. Go to line 34 of the new code and replace "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET" with "*lab#*-worker-safety"
+8. Go to line 34 of the new code and replace "REPLACE-WITH-NAME-OF-YOUR-S3-BUCKET" with "*lab#*-worker" (example: lab1-worker)
 
 9. Click Save.
 10. Click on Actions, and then "Publish new version".
 11. For Version description enter: Detect person and push frame to S3 bucket. and click Publish.
 
-### Step 6: Create DeepLens Project <a id="createdlproject"></a>
+#### Step 6: Create DeepLens Project <a id="createdlproject"></a>
 
 1. On new tab, open the AWS DeepLens console at https://console.aws.amazon.com/deeplens/.
 2. Choose Projects, then choose Create new project.
@@ -258,7 +258,7 @@ You have created and deployed object detection project to your Deeplens device.
         * Click on Add function, click on radio button for your lambda function (example: lab1-worker-safety-deeplens) lambda function and click Add function.
 * Click Create. This returns you to the Projects screen.
 
-### Step 7: Deploy DeepLens Project <a id="deploydlproject"></a>
+#### Step 7: Deploy DeepLens Project <a id="deploydlproject"></a>
 
 1. From DeepLens console, On the Projects screen, choose the radio button to the left of your project name, then choose Deploy to device.
 2. On the Target device screen, from the list of AWS DeepLens devices, choose the radio button to the left of the device where you want to deploy this project.
@@ -266,13 +266,13 @@ You have created and deployed object detection project to your Deeplens device.
     If a project is already deployed to the device, you will see a warning message "There is an existing project on this device. Do you want to replace it? If you Deploy, AWS DeepLens will remove the current project before deploying the new project."
 4. On the Review and deploy screen, review your project and click Deploy to deploy the project. This will take you to to device screen, which shows the progress of your project deployment.
 
-### Step 8: View Output in IoT <a id="iotoutput"></a>
+#### Step 8: View Output in IoT <a id="iotoutput"></a>
 
 1. On new tab, open the AWS IoT Console at https://console.aws.amazon.com/iot/home
 2. Under Subscription topic enter topic name *worker-safety-demo-cloud* and click Subscribe to topic.
 3. You should now see JSON message with a list of people detected and whether they are wearing safety hats or not.
 
-### Step 9: View Output in CloudWatch <a id="cloudwatchoutput"></a>
+#### Step 9: View Output in CloudWatch <a id="cloudwatchoutput"></a>
 
 1. On new tab, open the AWS CloudWatch Console at https://console.aws.amazon.com/cloudwatch
 2. Go to Dashboard on the left menu and click create dashboard called “*lab#*-worker-safety-dashboard”
@@ -281,10 +281,10 @@ You have created and deployed object detection project to your Deeplens device.
 5. In the dropdown menu on top right, check the “Auto-refresh” option and set to 10 seconds.
 6. Review the dashboard graph
 
-### Step 10: View Output in Web Dashboard <a id="dashboardoutput"></a>
+## Lab 4 - View Output in Web Dashboard <a id="dashboardoutput"></a>
 
 1. On new tab, open the AWS S3 Console at https://console.aws.amazon.com/s3
-2. Open the your lab bucket (folder) called *lab#*-worker-safety (example: *lab1*-worker-safety)
+2. Open the your lab bucket (folder) called *lab#*-worker (example: *lab1*-worker)
 3. Click on index.html and click on the link at the bottom under "Open URL" to open the web page in browser.
 4. In the address URL append ?iottopic=worker-safety-demo-cloud. This is the same value you added to Lambda environment variable and hit Enter.
 5. You should now see images coming from DeepLens with a green or red box around the person and detecting whether the peron is wearing a safety helmet
