@@ -284,7 +284,7 @@ You have created and deployed object detection project to your Deeplens device.
 ## Lab 4 - View Output in Web Dashboard <a id="dashboardoutput"></a>
 
 1. On new tab, open the AWS S3 Console at https://console.aws.amazon.com/s3
-2. Open the your lab bucket (folder) called *lab#*-worker (example: *lab1*-worker)
+2. Open the bucket (folder) called *lab#*-worker-web (example: *lab1*-worker-web)
 3. Click on index.html and click on the link at the bottom under "Open URL" to open the web page in browser.
 4. In the address URL append ?iottopic=worker-safety-demo-cloud. This is the same value you added to Lambda environment variable and hit Enter.
 5. You should now see images coming from DeepLens with a green or red box around the person and detecting whether the peron is wearing a safety helmet
